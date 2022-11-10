@@ -44,11 +44,6 @@ async function run() {
         const serviceCollection = client.db('trainerDb').collection('services');
         const reviewCollection = client.db('trainerDb').collection('reviews');
 
-        app.post('/jwt', (req, res) => {
-            const user = req.body;
-            const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1d' })
-            res.send({ token })
-        })
 
         // get all services
         app.get('/services', async (req, res) => {
@@ -86,13 +81,8 @@ async function run() {
 
 
 
-        app.get('/reviews', verifyJWT, async (req, res) => {
-            const decoded = req.decoded;
-
-            if(decoded.email !== req.query.email){
-                res.status(403).send({message: 'unauthorized access'})
-            }
-
+        app.get('/reviews',  async (req, res) => {
+        
             let query = {};
             if (req.query.email) {
                 query = {
@@ -106,9 +96,9 @@ async function run() {
 
         app.get('/reviews', async (req, res) => {
             let query = {};
-            if (req.query.service) {
+            if (req.query.service_id) {
                 query = {
-                    service: req.query.service
+                    service_id: req.query.service_id
                 }
             }
             const cursor = reviewCollection.find(query);
@@ -116,7 +106,7 @@ async function run() {
             res.send(reviews);
         });
 
-        app.post('/reviews', verifyJWT, async (req, res) => {
+        app.post('/reviews',  async (req, res) => {
             const review = req.body;
             const result = await reviewCollection.insertOne(review);
             res.send(result);
