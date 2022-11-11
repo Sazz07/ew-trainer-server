@@ -1,11 +1,11 @@
-# E-trainer
+# EW-trainer
 
-An online workout website building in react. 
+An online workout website building in react. In this website I will help you to get fit.
 
 
 ## Live Link
 
-Hosted in Netlify -> [Sazz Academy](https://assignment-11-1129d.web.app/)
+Hosted in Netlify -> [Ew-trainer](https://assignment-11-1129d.web.app/)
 
 ## Git Link 
 
@@ -16,12 +16,14 @@ Hosted in Netlify -> [Sazz Academy](https://assignment-11-1129d.web.app/)
 ## Resources & Credits
 
 * I have used Tailwind Components for this App.
-* Also used react toastify,
+* Also used react hot toast,
 HeroIcons.
 * I have used React Router.
-* Used React Recharts for making the Statistics Page.
+* I have used React Page view.
 * I have also used conditional rendering.
+* Used React Recharts for making the Statistics Page.
 * I have used firebase.
+* I have used mongodb database.
 
 
 
